@@ -8,7 +8,19 @@ else:
 with open(input_file, 'r') as f:
     lines = f.readlines()
 
-lines = [int(l.strip()) for l in lines]
+# Part 1
+sum_calories = []
+current_sum = 0
+for l in lines:
+    if l.strip() != '':
+        current_sum += int(l.strip())
+    else:
+        sum_calories.append(current_sum)
+        current_sum = 0
 
-# Part 1 
+sum_calories.append(current_sum)
+
+print(max(sum_calories))
+
 # Part 2
+print(sum(sorted(sum_calories)[::-1][:3]))
